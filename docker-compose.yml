@@ -1,0 +1,8 @@
+build:
+  container_name: readbook_build
+  image: fuyaode/readbook_env
+  command: "/bin/bash -l -c 'npm i && gulp build'"
+
+  working_dir: /e7readbook
+  volumes:
+    - ./:/e7readbook
