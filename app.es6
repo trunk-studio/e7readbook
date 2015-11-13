@@ -37,7 +37,7 @@ app.use(guest.middleware());
 
 guest.post('/auth/local/', function *(next) {
   var loginForm = this.request.body;
-  loginForm.domain = this.request.header.host;
+  loginForm.domain = this.request.header.host.split(":")[0];
   console.log("/auth/local/",loginForm);
   try {
     var result = yield request.post(restServerUrl+'/auth/local/')
