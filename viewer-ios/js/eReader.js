@@ -4,7 +4,7 @@ $$(document).on('pageInit', '.page[data-page="book"]', function (e) {
   $$('#openBook').click(function(){
     var bookPages = [];
     $$.ajax({
-      url: "/ereader?id=120D6F03-F7C5-40FA-B113-6FE4D914985B&name=APPLE&pages=100&loc=/a/1/a1tw-32sd-23dfs-3f24-sdff-fs3s&uuid=a1tw-32sd-23dfs-3f24-sdff-fs3s",
+      url: $$("#openBook").attr('data-url'),
       type:"GET",
       success: function(result){
         console.log(JSON.parse(result));

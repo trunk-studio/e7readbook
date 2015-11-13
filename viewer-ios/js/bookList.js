@@ -17,6 +17,10 @@ $$(document).on('pageInit', '.page[data-page="bookList"]', function (e) {
 function showBookList(data){
   var bookListTemplate = $$('script#booklist').html();
   var compiledBookListTemplate = Template7.compile(bookListTemplate);
+  console.log(data);
+  data[0].link = "/ereader?id=" +  data[0].eBookGuid +"&name=APPLE&pages=100&loc=/a/1/a1tw-32sd-23dfs-3f24-sdff-fs3s&uuid=a1tw-32sd-23dfs-3f24-sdff-fs3s";
+  // /ereader?id=120D6F03-F7C5-40FA-B113-6FE4D914985B&name=APPLE&pages=100&loc=/a/1/a1tw-32sd-23dfs-3f24-sdff-fs3s&uuid=a1tw-32sd-23dfs-3f24-sdff-fs3s
+  console.log(data[0].link);
   myApp.template7Data.bookInfo = data ;
   $$('#bookListUl').html(compiledBookListTemplate(data));
 }
