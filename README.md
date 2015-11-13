@@ -7,7 +7,10 @@ readbook
 $ npm install
 
 $ gulp build
-
+```
+or use
+```
+$ docker-compose up build
 ```
 
 ## Start
