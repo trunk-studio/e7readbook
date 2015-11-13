@@ -2,9 +2,12 @@
 $$(document).on('pageInit', '.page[data-page="book"]', function (e) {
 
   $$('#openBook').click(function(){
+    var id = $$("#openBook").attr('data-id');
+    var totalPageNumber = $$("#openBook").attr('data-totalPageNumber');
+    var openUrl = "/ereader?id="+ id +"&name=APPLE&pages="+ totalPageNumber +"&loc=/a/1/a1tw-32sd-23dfs-3f24-sdff-fs3s&uuid=a1tw-32sd-23dfs-3f24-sdff-fs3s";
     var bookPages = [];
     $$.ajax({
-      url: $$("#openBook").attr('data-url'),
+      url: openUrl,
       type:"GET",
       success: function(result){
         console.log(JSON.parse(result));
