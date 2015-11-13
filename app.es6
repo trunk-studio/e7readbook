@@ -22,7 +22,7 @@ app.use(koaBodyParser());
 
 var env = process.env.NODE_ENV || 'development';
 var addr = process.env.PICKLETE_PORT_1337_TCP_ADDR || 'localhost';
-var port = process.env.PICKLETE_PORT_1337_TCP_PORT || '1337';
+var port = process.env.PICKLETE_PORT_1337_TCP_PORT || '1336';
 
 //todo: use PICKLETE_ENDPOINT_URL=http://localhost:1337/
 
