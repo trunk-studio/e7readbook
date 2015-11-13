@@ -37,7 +37,7 @@ app.use(guest.middleware());
 
 guest.post('/auth/local/', function *(next) {
   var loginForm = this.request.body;
-  loginForm.domain = this.request.header.host.split(":")[0];
+  loginForm.domain = extractDomain(this.request.header.referer);
   console.log("/auth/local/",loginForm);
   try {
     var result = yield request.post(restServerUrl+'/auth/local/')
@@ -106,6 +106,18 @@ secured.get('/ereader', function *(next){
 //   .use(router.routes())
 //   .use(router.allowedMethods());
 
+function extractDomain(url) {
+    var domain;
+    //find & remove protocol (http, ftp, etc.) and get domain
+    if (url.indexOf("://") > -1) {
+        domain = url.split('/')[2];
+    }
+    else {
+        domain = url.split('/')[0];
+    }
+    domain = domain.split(':')[0];
+    return domain;
+}
 
 console.log('=== env ===', env);
 if(env === 'development')
