@@ -6,7 +6,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>Framework7 iOS</title>
+    <title>KOOBE E7READ</title>
     <link rel="stylesheet" href="../build/css/framework7.ios.css">
     <link rel="stylesheet" href="../build/css/framework7.ios.colors.css">
     <link rel="stylesheet" href="css/kitchen-sink.css">
@@ -37,27 +37,34 @@
                 <img src="http://auo.koobe.com.tw/public/ImageResource.aspx?46ce6918-0c4a-46df-8c94-f109aa3219e5" alt="" style="width:100%" />
               </div>
               <div class="content-block-title">主選單</div>
-              <div class="list-block">
+              <div id="mainMenu" class="list-block" style="display: none;">
                 <ul>
-                  <li id="loginBtn"><a href="#" class="item-link open-login-screen">
+                  <li id="loginBtn" class="notSigned" style="display: none;"><a href="#" class="item-link open-login-screen">
                       <div class="item-content">
                         <div class="item-media"><i class="icon icon-f7"></i></div>
                         <div class="item-inner">
                           <div class="item-title">登入系統</div>
                         </div>
                       </div></a></li>
-                  <li id="forgetPasswordBtn"><a href="login-screen.html" class="item-link">
+                  <li id="forgetPasswordBtn" class="notSigned" style="display: none;" ><a href="login-screen.html" class="item-link">
                       <div class="item-content">
                         <div class="item-media"><i class="icon icon-f7"></i></div>
                         <div class="item-inner">
                           <div class="item-title">忘記密碼</div>
                         </div>
                       </div></a></li>
-                  <li id="showBooksBtn" style="display: none;"><a href="cards.html" class="item-link">
+                  <li id="showBooksBtn" class="signed" style="display: none;"><a href="cards.html" class="item-link">
                       <div class="item-content">
                         <div class="item-media"><i class="icon icon-f7"></i></div>
                         <div class="item-inner">
                           <div class="item-title">瀏覽書籍</div>
+                        </div>
+                      </div></a></li>
+                  <li id="signOutBtn" class="signed" style="display: none;" ><a href="#" class="item-link">
+                      <div class="item-content">
+                        <div class="item-media"><i class="icon icon-f7"></i></div>
+                        <div class="item-inner">
+                          <div class="item-title">登出</div>
                         </div>
                       </div></a></li>
                 </ul>

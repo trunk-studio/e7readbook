@@ -17,16 +17,20 @@ $$(document).on('pageInit', '.page[data-page="index"]', function (e) {
     type:"GET",
     success: function(result){
       if(JSON.parse(result)){
-        $$("#showBooksBtn").show();
-        $$("#loginBtn").hide();
-        $$("#forgetPasswordBtn").hide();
+        $$("#mainMenu").show();
+        $$(".notSigned").hide();
+        $$(".signed").show();
       }else{
-        $$("#showBooksBtn").hide();
-        $$("#loginBtn").show();
-        $$("#forgetPasswordBtn").show();
+        $$("#mainMenu").show();
+        $$(".notSigned").show();
+        $$(".signed").hide();
       }
     }
   });
 })
 
 myApp.init();
+
+$$("#signOutBtn").click(function() {
+    myApp.alert("!!!");
+})
