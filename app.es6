@@ -14,12 +14,6 @@ app.use(session());
 var koaBodyParser = require('koa-bodyparser');
 app.use(koaBodyParser());
 
-
-// require('./auth.js')
-// var passport = require('koa-passport')
-// app.use(passport.initialize());
-// app.use(passport.session());
-
 var env = process.env.NODE_ENV || 'development';
 var addr = process.env.PICKLETE_PORT_1337_TCP_ADDR || 'localhost';
 var port = process.env.PICKLETE_PORT_1337_TCP_PORT || '1336';
