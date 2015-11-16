@@ -107,6 +107,22 @@ secured.get('/ereader', function *(next){
   }
 });
 
+secured.post('/member/update', function *(next) {
+  var loginForm = this.request.body;
+  loginForm.user = this.session.user;
+  console.log("/member/update",loginForm);
+  try {
+    var result = yield request.post(restServerUrl+'/member/update')
+    .send(loginForm)
+    .set('Content-Type', 'application/json')
+    .set('x-requested-with', 'XMLHttpRequest');
+    this.body = result.body;
+    console.log(result.body);
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 // app
 //   .use(router.routes())
 //   .use(router.allowedMethods());
