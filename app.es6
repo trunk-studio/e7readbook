@@ -66,6 +66,17 @@ guest.get('/user/loginStatus', function *(next){
   }
 });
 
+guest.get('/user/signOut', function *(next){
+  console.log(this);
+  try {
+    this.session.login = false;
+    this.session.user = null;
+    this.body = this.session.login;
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 /* public routes */
 
 

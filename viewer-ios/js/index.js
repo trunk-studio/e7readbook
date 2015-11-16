@@ -32,5 +32,16 @@ $$(document).on('pageInit', '.page[data-page="index"]', function (e) {
 myApp.init();
 
 $$("#signOutBtn").click(function() {
-    myApp.alert("!!!");
+  $$.ajax({
+    url: "/user/signOut",
+    type:"GET",
+    success: function(result){
+      myApp.addNotification({
+        title: '登出成功',
+        hold: 2000
+      });
+      $$(".notSigned").show();
+      $$(".signed").hide();
+    }
+  });
 })
