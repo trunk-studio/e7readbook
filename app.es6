@@ -14,12 +14,6 @@ app.use(session());
 var koaBodyParser = require('koa-bodyparser');
 app.use(koaBodyParser());
 
-
-// require('./auth.js')
-// var passport = require('koa-passport')
-// app.use(passport.initialize());
-// app.use(passport.session());
-
 var env = process.env.NODE_ENV || 'development';
 var addr = process.env.PICKLETE_PORT_1337_TCP_ADDR || 'localhost';
 var port = process.env.PICKLETE_PORT_1337_TCP_PORT || '1336';
@@ -66,6 +60,17 @@ guest.get('/user/loginStatus', function *(next){
   }
 });
 
+guest.get('/user/signOut', function *(next){
+  console.log(this);
+  try {
+    this.session.login = false;
+    this.session.user = null;
+    this.body = this.session.login;
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 /* public routes */
 
 
@@ -97,6 +102,22 @@ secured.get('/ereader', function *(next){
     console.log("result",result);
     result.body.domain = restServerUrl;
     this.body = result.body;
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+secured.post('/member/update', function *(next) {
+  var loginForm = this.request.body;
+  loginForm.user = this.session.user;
+  console.log("/member/update",loginForm);
+  try {
+    var result = yield request.post(restServerUrl+'/member/update')
+    .send(loginForm)
+    .set('Content-Type', 'application/json')
+    .set('x-requested-with', 'XMLHttpRequest');
+    this.body = result.body;
+    console.log(result.body);
   } catch (e) {
     console.log(e);
   }

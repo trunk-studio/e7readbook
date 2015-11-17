@@ -9,9 +9,8 @@ $$('#login-form').on('submitted', function (e) {
       title: '登入成功',
       hold: 2000
     });
-    $$("#showBooksBtn").show();
-    $$("#loginBtn").hide();
-    $$("#forgetPasswordBtn").hide();
+    $$(".notSigned").hide();
+    $$(".signed").show();
   }else{
     myApp.alert('請再次確認帳號密碼喔');
   }

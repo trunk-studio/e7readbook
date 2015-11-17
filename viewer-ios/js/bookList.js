@@ -1,10 +1,12 @@
 $$(document).on('pageInit', '.page[data-page="bookList"]', function (e) {
+  myApp.showPreloader('書籍清單載入中')
   $$.ajax({
     url: "/books",
     type:"POST",
     success: function(result){
       // console.log(JSON.parse(result));
       showBookList(JSON.parse(result));
+      myApp.hidePreloader();
     },
     error:function(xhr, ajaxOptions, thrownError){
       myApp.alert(xhr.status);
