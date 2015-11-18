@@ -4,7 +4,6 @@ var mount = require('koa-mount');
 var path = require('path');
 var staticCache = require('koa-static-cache');
 var serve = require('koa-static');
-var userAgent = require('koa-useragent');
 var app = module.exports = koa();
 
 
