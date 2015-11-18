@@ -34,7 +34,7 @@ guest.get('/', function *(next){
   if (/mobile/i.test(this.request.header['user-agent'])){
     this.redirect('/app/');
   }else{
-    this.redirect('/index.html');
+    this.redirect('/public/');
   }
 });
 
