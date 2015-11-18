@@ -32,7 +32,7 @@ app.use(guest.middleware());
 
 guest.get('/', function *(next){
   if (/mobile/i.test(this.request.header['user-agent'])){
-    this.redirect('/viewer-ios/');
+    this.redirect('/app/');
   }else{
     this.redirect('/index.html');
   }
@@ -86,11 +86,11 @@ guest.get('/user/signOut', function *(next){
 var secured = new Router();
 
 app.use(function*(next) {
-  if (this.session.login || this.request.url.startsWith("/build") || this.request.url.startsWith("/viewer-ios")) {
+  if (this.session.login || this.request.url.startsWith("/build") || this.request.url.startsWith("/app")) {
     yield next
   } else {
     yield next
-    // this.redirect('/viewer-ios/index.html');
+    // this.redirect('/app/index.html');
   }
 })
 app.use(secured.middleware());
