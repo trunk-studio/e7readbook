@@ -9,6 +9,8 @@ $$('#login-form').on('submitted', function (e) {
       title: '登入成功',
       hold: 2000
     });
+    $$("input[name='password']").val('');
+    $$("input[name='identifier']").val('')
     $$(".notSigned").hide();
     $$(".signed").show();
   }else{

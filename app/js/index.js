@@ -27,21 +27,23 @@ $$(document).on('pageInit', '.page[data-page="index"]', function (e) {
       }
     }
   });
+
+
+  $$("#signOutBtn").click(function() {
+    $$.ajax({
+      url: "/user/signOut",
+      type:"GET",
+      success: function(result){
+        myApp.addNotification({
+          title: '登出成功',
+          hold: 2000
+        });
+        $$(".notSigned").show();
+        $$(".signed").hide();
+      }
+    });
+  })
+
 })
 
 myApp.init();
-
-$$("#signOutBtn").click(function() {
-  $$.ajax({
-    url: "/user/signOut",
-    type:"GET",
-    success: function(result){
-      myApp.addNotification({
-        title: '登出成功',
-        hold: 2000
-      });
-      $$(".notSigned").show();
-      $$(".signed").hide();
-    }
-  });
-})
