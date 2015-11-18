@@ -4,6 +4,7 @@ var mount = require('koa-mount');
 var path = require('path');
 var staticCache = require('koa-static-cache');
 var serve = require('koa-static');
+var userAgent = require('koa-useragent');
 var app = module.exports = koa();
 
 
@@ -28,6 +29,14 @@ var Router = require('koa-router');
 var guest = new Router();
 
 app.use(guest.middleware());
+
+guest.get('/', function *(next){
+  if (/mobile/i.test(this.request.header['user-agent'])){
+    this.redirect('/viewer-ios/');
+  }else{
+    this.redirect('/index.html');
+  }
+});
 
 guest.post('/auth/local/', function *(next) {
   var loginForm = this.request.body;
@@ -80,7 +89,8 @@ app.use(function*(next) {
   if (this.session.login || this.request.url.startsWith("/build") || this.request.url.startsWith("/viewer-ios")) {
     yield next
   } else {
-    this.redirect('/viewer-ios/index.html');
+    yield next
+    // this.redirect('/viewer-ios/index.html');
   }
 })
 app.use(secured.middleware());
@@ -139,6 +149,9 @@ function extractDomain(url) {
     domain = domain.split(':')[0];
     return domain;
 }
+
+
+app.use(userAgent());
 
 console.log('=== env ===', env);
 if(env === 'development')
