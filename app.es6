@@ -85,11 +85,14 @@ guest.get('/user/signOut', function *(next){
 var secured = new Router();
 
 app.use(function*(next) {
-  if (this.session.login || this.request.url.startsWith("/build") || this.request.url.startsWith("/app")) {
+  if (this.session.login ||
+     this.request.url.startsWith("/build") ||
+     this.request.url.startsWith("/app") ||
+     this.request.url.startsWith("/public")) {
     yield next
   } else {
-    yield next
-    // this.redirect('/app/index.html');
+    // yield next
+    this.redirect('/app/index.html');
   }
 })
 app.use(secured.middleware());
