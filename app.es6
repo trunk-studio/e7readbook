@@ -150,8 +150,6 @@ function extractDomain(url) {
 }
 
 
-app.use(userAgent());
-
 console.log('=== env ===', env);
 if(env === 'development'){
   app.use(mount('/', serve(path.join(__dirname, './'))));
