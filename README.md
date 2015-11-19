@@ -26,11 +26,11 @@ $ npm start
 ```
 buyer@gmail.com / buyer
 
-http://e7read.koobe.com.tw:3000/viewer-ios/
+http://e7read.koobe.com.tw:3000/app/
 
 buyerB@gmail.com / buyerB
 
-http://read.koobe.com.tw:3000/viewer-ios/
+http://read.koobe.com.tw:3000/app/
 
 
 ## Dist vs Build versions

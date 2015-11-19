@@ -29,6 +29,14 @@ var guest = new Router();
 
 app.use(guest.middleware());
 
+guest.get('/', function *(next){
+  if (/mobile/i.test(this.request.header['user-agent'])){
+    this.redirect('/app/');
+  }else{
+    this.redirect('/public/');
+  }
+});
+
 guest.post('/auth/local/', function *(next) {
   var loginForm = this.request.body;
   loginForm.domain = extractDomain(this.request.header.referer);
@@ -77,10 +85,14 @@ guest.get('/user/signOut', function *(next){
 var secured = new Router();
 
 app.use(function*(next) {
-  if (this.session.login || this.request.url.startsWith("/build") || this.request.url.startsWith("/viewer-ios")) {
+  if (this.session.login ||
+     this.request.url.startsWith("/build") ||
+     this.request.url.startsWith("/app") ||
+     this.request.url.startsWith("/public")) {
     yield next
   } else {
-    this.redirect('/viewer-ios/index.html');
+    // yield next
+    this.redirect('/app/index.html');
   }
 })
 app.use(secured.middleware());
@@ -140,9 +152,11 @@ function extractDomain(url) {
     return domain;
 }
 
+
 console.log('=== env ===', env);
-if(env === 'development')
+if(env === 'development'){
   app.use(mount('/', serve(path.join(__dirname, './'))));
+}
 else if(env === 'production')
   app.use(mount('/', staticCache(path.join(__dirname, 'dist'))));
 
