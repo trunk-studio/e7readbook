@@ -12,7 +12,7 @@ $$(document).on('pageInit', '.page[data-page="book"]', function (e) {
       success: function(result){
         console.log(JSON.parse(result));
         var bookDate = JSON.parse(result);
-        if(bookDate.pageTotal <= 0){
+        if(bookDate.pageTotal == 0){
           myApp.alert("書本沒有資料喔");
           return ;
         }
