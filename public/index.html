@@ -40,7 +40,8 @@
             <button type="button" data-toggle="collapse" data-target="#brn-navbar-collapse-1" class="navbar-toggle">
               <!-- You can change batch icon to your own--><span class="batch icon32">&#xf0AA;</span>
               <!-- Logo image-->
-            </button><a href="#header" class="navbar-brand"><img src="img/barnaul-logo.png" alt="Barnaul-logo"></a>
+            </button>
+            <!-- <a href="#header" class="navbar-brand"><img src="img/barnaul-logo.png" alt="Barnaul-logo"></a> -->
           </div>
           <!-- Collapse button design end-->
           <!-- Collapsing navbar-->
@@ -85,11 +86,11 @@
     <section data-stellar-background-ratio="0.5" data-stellar-vertical-offset="-76" id="brn-promo" class="iphone-cover-new">
       <div class="container">
         <div class="row">
-          <div class="col-md-6">
+          <div id="description" class="col-md-6">
             <!-- Promo heading-->
-            <h1>全新雲端閱讀體驗</h1>
+            <!-- <h1>全新雲端閱讀體驗</h1>
             <p class="lead">AUO eBooks是友達的電子書平台，包含友達季刊WOW AUO與公司相關手冊，並提供外部刊物給所有友達人於線上閱讀。WOW AUO是傳遞友達文化與脈動的刊物，每季透過【新知趨勢】、【曼妙體驗】、【活力脈動】將公司內外部趨勢、知識、活動等精采的資訊，分享給所有友達人，歡迎各部門與同仁踴躍投稿。</p>
-            <!-- <a href="#" class="btn btn-default">Buy template</a> -->
+            <!-- <a href="#" class="btn btn-default">Buy template</a> --> -->
             <!-- Promo heading end-->
           </div>
           <!-- /col-md-6-->
@@ -114,6 +115,20 @@
     </section>
     <!-- ==================================================== PROMO END ======================================================-->
     <!-- ================================================== SCRIPTS ====================================================-->
+
+    <script type="text/html" id="logoTpl">
+        <a href="#header" class="navbar-brand"><img data-src="logo" alt="Barnaul-logo"></a>
+    </script>
+
+    <script type="text/html" id="descriptionTpl">
+      <h1>全新雲端閱讀體驗</h1>
+      <p class="lead" data-content="description"></p>
+    </script>
+
+    <script type="text/html" id="rightsDescriptionTpl">
+      <p data-content="rightsDescription"></p>
+    </script>
+
     <!-- jQuery-->
     <script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
     <!-- Bootstrap scripts-->
@@ -130,14 +145,17 @@
     <script src="bower_components/fitvids/jquery.fitvids.js" type="text/javascript"></script>
     <!-- jQuery Form Validate-->
     <script src="bower_components/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+    <!-- jQuery template Validate-->
+    <script src="bower_components/jquery-loadTemplate/jquery.loadTemplate-1.5.0.min.js" type="text/javascript"></script>
     <!-- Theme Scripts-->
     <script src="js/scripts.js" type="text/javascript"></script>
+    <script src="js/loadProfile.js" type="text/javascript"></script>
     <footer>
       <div class="container">
         <div class="row">
           <!-- Copyright-->
-          <div class="col-sm-6">
-            <p>Copyright &copy; 2015 Koobe Inc. All Rights Reserved.</p>
+          <div id="rightsDescription" class="col-sm-6">
+            <!-- <p>Copyright &copy; 2015 Koobe Inc. All Rights Reserved.</p> -->
           </div>
         </div>
       </div>

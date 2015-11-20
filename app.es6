@@ -37,6 +37,15 @@ guest.get('/', function *(next){
   }
 });
 
+guest.get('/siteProfile', function *(next){
+  try {
+    var result = yield request.get(restServerUrl+'/siteProfile?domain='+extractDomain(this.request.header.referer));
+    this.body = result.body;
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 guest.post('/auth/local/', function *(next) {
   var loginForm = this.request.body;
   loginForm.domain = extractDomain(this.request.header.referer);
