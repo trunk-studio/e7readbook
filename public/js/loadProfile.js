@@ -6,15 +6,15 @@ $(document).ready(function() {
     success: function(result){
       console.log(result)
       $(".navbar-header").loadTemplate($("#logoTpl"),{
-            logo: result.ViewerLoginImageUrl
+            logo: result.domain+'/images'+result.profile.ViewerLoginImageUrl
       });
 
       $("#description").loadTemplate($("#descriptionTpl"),{
-            description: result.LoginPageHtml
+            description: result.profile.LoginPageHtml
       });
 
       $("#rightsDescription").loadTemplate($("#rightsDescriptionTpl"),{
-            rightsDescription: result.RightsDescription
+            rightsDescription: result.profile.RightsDescription
       });
     },
     error:function(xhr, ajaxOptions, thrownError){
