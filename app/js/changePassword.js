@@ -13,13 +13,13 @@ $$(document).on('pageInit', '.page[data-page="changePassword"]', function (e) {
       $$(".notSigned").hide();
       $$(".signed").show();
     }else{
-      myApp.alert('請再次確認密碼喔');
+      myApp.alert('請再次確認密碼喔','錯誤');
     }
   });
 
   $$('#changePassword-form').on('submitError', function (e) {
     console.log(e);
-    myApp.alert('請再次確認密碼喔');
+    myApp.alert('請再次確認密碼喔','錯誤');
   });
 
 });
