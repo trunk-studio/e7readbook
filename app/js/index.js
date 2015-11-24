@@ -46,11 +46,15 @@ $$(document).on('pageInit', '.page[data-page="index"]', function (e) {
 
   $$("#forgetPasswordBtn").click(function() {
     myApp.prompt('請輸入您的email','忘記密碼' ,function (value) {
+      if(!validateEmail(value)){
+        myApp.alert("請輸入email","錯誤");
+        return;
+      }
       $$.ajax({
         url: "/forgotPassword",
         type:"GET",
         data : {
-          email: 'service@trunk-studio.com'
+          email: value
         },
         success: function(result){
           myApp.alert("已把重置密碼信件，寄送到您的信箱","已確認");
@@ -61,6 +65,11 @@ $$(document).on('pageInit', '.page[data-page="index"]', function (e) {
       });
     });
   })
+
+  function validateEmail(email) {
+    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    return re.test(email);
+  }
 
 })
 
