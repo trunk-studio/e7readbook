@@ -4,7 +4,7 @@ $$(document).on('pageInit', '.page[data-page="bookList"]', function (e) {
     url: "/books",
     type:"POST",
     success: function(result){
-      // console.log(JSON.parse(result));
+      console.log(JSON.parse(result));
       showBookList(JSON.parse(result));
       myApp.hidePreloader();
     },
