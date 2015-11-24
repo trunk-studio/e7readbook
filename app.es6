@@ -46,6 +46,17 @@ guest.get('/siteProfile', function *(next){
   }
 });
 
+guest.get('/forgotPassword', function *(next){
+  try {
+    console.log(this);
+    var domain = extractDomain(this.request.header.referer);
+    var result = yield request.get(restServerUrl+ this.request.url + '&domain='+ domain);
+    this.body = result.body;
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 guest.post('/auth/local/', function *(next) {
   var loginForm = this.request.body;
   loginForm.domain = extractDomain(this.request.header.referer);

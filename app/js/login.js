@@ -14,6 +14,6 @@ $$('#login-form').on('submitted', function (e) {
     $$(".notSigned").hide();
     $$(".signed").show();
   }else{
-    myApp.alert('請再次確認帳號密碼喔');
+    myApp.alert('請再次確認帳號密碼喔','錯誤');
   }
 });
