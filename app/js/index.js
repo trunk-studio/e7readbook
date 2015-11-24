@@ -44,6 +44,24 @@ $$(document).on('pageInit', '.page[data-page="index"]', function (e) {
     });
   })
 
+  $$("#forgetPasswordBtn").click(function() {
+    myApp.prompt('請輸入您的email','忘記密碼' ,function (value) {
+      $$.ajax({
+        url: "/forgotPassword",
+        type:"GET",
+        data : {
+          email: 'service@trunk-studio.com'
+        },
+        success: function(result){
+          myApp.alert("已把重置密碼信件，寄送到您的信箱","已確認");
+        },
+        error:function(xhr, ajaxOptions, thrownError){
+          myApp.alert("找不到此用戶","錯誤");
+        }
+      });
+    });
+  })
+
 })
 
 myApp.init();
