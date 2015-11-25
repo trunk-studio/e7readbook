@@ -4,9 +4,11 @@ $$(document).on('pageInit', '.page[data-page="bookList"]', function (e) {
     url: "/books",
     type:"POST",
     success: function(result){
-      console.log(JSON.parse(result));
-      showBookList(JSON.parse(result));
+      var books = JSON.parse(result);
+      console.log(books);
+      showBookList(books);
       myApp.hidePreloader();
+      $$('#bookListLength').text(books.length+" 本書");
     },
     error:function(xhr, ajaxOptions, thrownError){
       myApp.alert(xhr.status);
