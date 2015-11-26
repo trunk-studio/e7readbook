@@ -32,9 +32,9 @@
         <div class="pages navbar-through toolbar-through">
           <div data-page="index" class="page">
             <div class="page-content">
-              <div class="content-block-title">AUO eBooks 友達電子書</div>
+              <div id="siteName" class="content-block-title"></div>
               <div class="content-block">
-                <img src="http://auo.koobe.com.tw/public/ImageResource.aspx?46ce6918-0c4a-46df-8c94-f109aa3219e5" alt="" style="width:100%" />
+                <img id="siteProfileViewerLoginImageUrl"  alt="" style="width:100%" />
               </div>
               <div class="content-block-title">主選單</div>
               <div id="mainMenu" class="list-block" style="display: none;">
@@ -76,9 +76,7 @@
                       </div></a></li>
                 </ul>
               </div>
-              <div class="content-block">
-                <p>AUO eBooks 是友達的電子書平台，包含友達季刊 WOW AUO 與公司相關手冊，並提供外部刊物給所有友達人於線上閱讀。WOW AUO 是傳遞友達文化與脈動的刊物，每季透過【新知趨勢】、【曼妙體驗】、【活力脈動】將公司內外部趨勢、知識、活動等精采的資訊，分享給所有友達人，歡迎各部門與同仁踴躍投稿。</p>
-              </div>
+              <div id="siteProfileLoginPageHtml"  class="content-block">雲端閱讀平台正在升級中，如有疑問請與平台管理人員聯繫⋯</div>
             </div>
           </div>
         </div>
@@ -90,7 +88,7 @@
         <div class="page">
           <div class="page-content login-screen-content">
             <div class="login-screen-title">登入系統</div>
-            <form id="login-form" action="/auth/local/" method="post" class="ajax-submit">
+            <form id="login-form" action="/auth/local/" method="post" class="ajax-submit" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
               <div class="list-block">
                 <ul>
                   <li class="item-content">
