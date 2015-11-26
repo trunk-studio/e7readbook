@@ -17,7 +17,7 @@ $$(document).on('pageInit', '.page[data-page="book"]', function (e) {
           return ;
         }
         bookDate.pages.forEach(function(book){
-          bookPages.push(bookDate.domain + book.url);
+          bookPages.push(book.url);
         });
         var myPhotoBrowserStandalone = myApp.photoBrowser({
           photos : bookPages,
