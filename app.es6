@@ -187,4 +187,14 @@ var port = 3000;
 console.log('ec-platform Server Url', restServerUrl);
 console.log('mobile site Url', 'http://localhost:' + port);
 
-app.listen(port);
+
+var liftApp = async () => {
+
+  app.listen(port);
+  return app;
+
+}
+
+if (env !== 'test') liftApp();
+
+module.exports = liftApp
