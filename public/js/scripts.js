@@ -48,9 +48,9 @@ $(document).ready(function() {
         if(response == 'PRINYAL') {
           // Success message
           result = '<div class="alert alert-success">Thank you! We will answer you soon!</div>';
-          setTimeout("location.reload(true);",5000);
+          setTimeout("location.reload(true);",3000);
         } else {
-          result = response;
+          result = '<div class="alert alert-danger">'+response+'</div>';
         }
         $('#feedback_messages').html(result);
       }
@@ -60,16 +60,19 @@ $(document).ready(function() {
 
   // Feedback form validate
   $('#feedback-form').validate({
+    onkeyup: false,
+    Onubmit: true,
     rules: {
       name:       {required: true},
       email:      {required: true, email: true },
-      phone:      {required: true},
+      phone:      {required: true, number: true},
       serviceUnits:{required: true},
       situation:  {required: true},
       message:    {required: true}
     },
     highlight: function(element) {
       $(element).closest('.form-group').removeClass('success').addClass('error');
+      $(element).val('');
     },
     success: function(element) {
       element

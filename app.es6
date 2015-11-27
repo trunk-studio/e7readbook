@@ -8,6 +8,7 @@ var util = require('util');
 var fs = require('fs');
 var sailsMailer = require('sails-service-mailer');
 var app = module.exports = koa();
+var config = require('./config/local.js');
 
 
 var session = require('koa-generic-session');
@@ -40,24 +41,25 @@ guest.get('/', function *(next){
   }
 });
 
-var mailConfig = require('./config/mail.default');
-console.log('=== mail config ===', mailConfig);
-
 global.server = {
-  mailer: sailsMailer.create(mailConfig.mail.type, mailConfig.mail.config)
+  mailer: sailsMailer.create(config.mail.type, config.mail.config)
 };
 
 guest.post('/feedback', function *(next){
   try {
     console.log("=== POST contact mail ===",this.request.body);
     var data = this.request.body;
-    var contactName = data.name || 'NO_NAME',
-		  contactEmail = data.email || 'NO_EMAIL',
-      contactPhone = data.phone || 'NO_PHONE',
-      contactServiceUnits = data.serviceUnits || 'NO_SERVICEUNITS',
-		  contactSubject = data.situation || 'NO_SUBJECT',
-		  contactMessage = data.message || 'NO_MWSSAGE',
+    var contactName = data.name ,
+		  contactEmail = data.email ,
+      contactPhone = data.phone ,
+      contactServiceUnits = data.serviceUnits ,
+		  contactSubject = data.situation ,
+		  contactMessage = data.message ,
       contactDate = new Date();
+
+    var notInput = (!contactName || !contactEmail || !contactPhone || !contactServiceUnits || !contactSubject || !contactMessage)
+    if(notInput)
+      throw new Error();
 
     var mailContent = fs.readFileSync(__dirname + '/mailTemplates/contact.html').toString();
   	var mailConfirmation = fs.readFileSync(__dirname + '/mailTemplates/confirmation.html').toString();
@@ -67,29 +69,28 @@ guest.post('/feedback', function *(next){
         contactServiceUnits, contactSubject, contactMessage, contactDate),
       subject: 'New message from ' + contactName,
       replyTo: contactEmail,
-      to: '',
-      bcc: ''
+      to: 'service@trunk-studio.com'
     };
 
     var message2 = {
       html: util.format(mailConfirmation, contactName, contactMessage),
       subject: '[KOOBE] 您的回報已順利送出.',
-      replyTo: '',
-      to: contactEmail,
-      bcc: ''
+      replyTo: 'service@trunk-studio.com',
+      to: contactEmail
     };
 
-    server.mailer.send(message).then(function (result) {
-      console.log("sending mail... done");
-    });
-
-    server.mailer.send(message2).then(function (result) {
-      console.log("sending confirmation mail... done");
-    });
+    // server.mailer.send(message).then(function (result) {
+    //   console.log("sending mail... done");
+    // });
+    //
+    // server.mailer.send(message2).then(function (result) {
+    //   console.log("sending confirmation mail... done");
+    // });
 
     console.log(message,message2);
-    this.body = 'success';
+    this.body = 'PRINYAL';
   } catch (e) {
+    this.body = '請補齊資料';
     console.log(e);
   }
 });
