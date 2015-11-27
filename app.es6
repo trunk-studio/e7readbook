@@ -79,13 +79,13 @@ guest.post('/feedback', function *(next){
       to: contactEmail
     };
 
-    // server.mailer.send(message).then(function (result) {
-    //   console.log("sending mail... done");
-    // });
-    //
-    // server.mailer.send(message2).then(function (result) {
-    //   console.log("sending confirmation mail... done");
-    // });
+    server.mailer.send(message).then(function (result) {
+      console.log("sending mail... done");
+    });
+
+    server.mailer.send(message2).then(function (result) {
+      console.log("sending confirmation mail... done");
+    });
 
     console.log(message,message2);
     this.body = 'PRINYAL';
