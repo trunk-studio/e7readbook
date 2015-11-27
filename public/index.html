@@ -109,6 +109,87 @@
       <!-- /container-->
     </section>
     <!-- ==================================================== PROMO END ======================================================-->
+    <!-- ==================================================== FEEDBACK =======================================================-->
+    <section id="brn-feedback">
+      <div class="container">
+        <!-- Section header-->
+        <header>
+          <div class="row">
+            <div class="col-xs-12">
+              <!-- Don't forget to use span tag for center lines-->
+              <h2 class="stripe"><span>Feedback</span></h2>
+            </div>
+            <!-- /col-xs-12-->
+          </div>
+          <!-- /row-->
+        </header>
+        <!-- Section header end-->
+        <div class="row">
+          <div class="col-sm-6">
+            <!-- Feedback messages output-->
+            <div id="feedback_messages"></div>
+            <!-- Feedback messages output end-->
+            <!-- Feedback form-->
+            <form action="/feedback" method="post" id="feedback-form" class="form-horizontal feedback">
+              <!-- Form Group-->
+              <div class="form-group">
+                <input id="name" type="text" name="name" placeholder="帳號" class="form-control">
+              </div>
+              <!-- Form Group end-->
+              <!-- Form Group-->
+              <div class="form-group">
+                <input id="email" type="email" name="email" placeholder="E-mail" class="form-control">
+              </div>
+              <!-- Form Group end-->
+              <!-- Form Group-->
+              <div class="form-group">
+                <input id="phone" type="text" name="phone" placeholder="行動電話" class="form-control">
+              </div>
+              <!-- Form Group end-->
+              <!-- Form Group-->
+              <div class="form-group">
+                <input id="serviceUnits" type="text" name="serviceUnits" placeholder="服務單位" class="form-control">
+              </div>
+              <!-- Form Group end-->
+              <!-- Form Group-->
+              <div class="form-group">
+                <select name="situation" class="form-control">
+                  <option selected value="">主旨</option>
+                　<option value="accountCantlogin">帳號無法登入</option>
+                　<option value="bookListNotShow">無法顯示書籍清單</option>
+                　<option value="eBookWithoutContent">無法瀏覽電子書內容</option>
+                　<option value="loadingSlow">讀取速度緩慢</option>
+                  <option value="other">其他</option>
+                </select>
+              </div>
+              <!-- Form Group end-->
+              <!-- Form Group-->
+              <div class="form-group">
+                <textarea id="message" name="message" cols="30" rows="7" placeholder="反映內容" class="form-control"></textarea>
+              </div>
+              <!-- Form Group end-->
+              <!-- Form Group-->
+              <div class="form-group">
+                <button value="OK" type="submit" class="btn btn-default">送出</button>
+              </div>
+              <!-- Form Group end-->
+            </form>
+            <!-- Feedback form end-->
+          </div>
+          <!-- /col-sm-6-->
+          <!-- Feedback right info-->
+          <div class="col-sm-6">
+            <h3 class="color-primary">Stay in touch!</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis consequat diam. Cras ut justo quam. Duis a nisl tortor. Curabitur metus nunc, aliquam eget orci id, luctus placerat justo. Praesent dignissim non justo id pharetra. Donec sit amet ullamcorper urna. Aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+          <!-- Feedback right info end-->
+        </div>
+        <!-- /row-->
+      </div>
+      <!-- /container-->
+    </section>
+    <!-- ================================================== FEEDBACK end =====================================================-->
+
     <!-- ================================================== SCRIPTS ====================================================-->
 
     <script type="text/html" id="logoTpl">

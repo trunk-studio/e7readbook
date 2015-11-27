@@ -4,6 +4,9 @@ var mount = require('koa-mount');
 var path = require('path');
 var staticCache = require('koa-static-cache');
 var serve = require('koa-static');
+var util = require('util');
+var fs = require('fs');
+var sailsMailer = require('sails-service-mailer');
 var app = module.exports = koa();
 
 
@@ -34,6 +37,60 @@ guest.get('/', function *(next){
     this.redirect('/app/');
   }else{
     this.redirect('/public/');
+  }
+});
+
+var mailConfig = require('./config/mail.default');
+console.log('=== mail config ===', mailConfig);
+
+global.server = {
+  mailer: sailsMailer.create(mailConfig.mail.type, mailConfig.mail.config)
+};
+
+guest.post('/feedback', function *(next){
+  try {
+    console.log("=== POST contact mail ===",this.request.body);
+    var data = this.request.body;
+    var contactName = data.name || 'NO_NAME',
+		  contactEmail = data.email || 'NO_EMAIL',
+      contactPhone = data.phone || 'NO_PHONE',
+      contactServiceUnits = data.serviceUnits || 'NO_SERVICEUNITS',
+		  contactSubject = data.situation || 'NO_SUBJECT',
+		  contactMessage = data.message || 'NO_MWSSAGE',
+      contactDate = new Date();
+
+    var mailContent = fs.readFileSync(__dirname + '/mailTemplates/contact.html').toString();
+  	var mailConfirmation = fs.readFileSync(__dirname + '/mailTemplates/confirmation.html').toString();
+
+    var message = {
+      html: util.format(mailContent, contactName, contactEmail, contactPhone,
+        contactServiceUnits, contactSubject, contactMessage, contactDate),
+      subject: 'New message from ' + contactName,
+      replyTo: contactEmail,
+      to: '',
+      bcc: ''
+    };
+
+    var message2 = {
+      html: util.format(mailConfirmation, contactName, contactMessage),
+      subject: '[KOOBE] 您的回報已順利送出.',
+      replyTo: '',
+      to: contactEmail,
+      bcc: ''
+    };
+
+    server.mailer.send(message).then(function (result) {
+      console.log("sending mail... done");
+    });
+
+    server.mailer.send(message2).then(function (result) {
+      console.log("sending confirmation mail... done");
+    });
+
+    console.log(message,message2);
+    this.body = 'success';
+  } catch (e) {
+    console.log(e);
   }
 });
 

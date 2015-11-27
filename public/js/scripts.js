@@ -42,7 +42,7 @@ $(document).ready(function() {
     var str = $(this).serialize();
     $.ajax({
       type: "POST",
-      url: "assets/feedback.php",
+      url: "/feedback",
       data: str,
       success: function(response) {
         if(response == 'PRINYAL') {
@@ -63,6 +63,9 @@ $(document).ready(function() {
     rules: {
       name:       {required: true},
       email:      {required: true, email: true },
+      phone:      {required: true},
+      serviceUnits:{required: true},
+      situation:  {required: true},
       message:    {required: true}
     },
     highlight: function(element) {
