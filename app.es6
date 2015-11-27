@@ -106,7 +106,7 @@ var secured = new Router();
 
 app.use(function*(next) {
   if (this.session.login ||
-     this.request.url.startsWith("/build") ||
+     this.request.url.startsWith("/dist") ||
      this.request.url.startsWith("/app") ||
      this.request.url.startsWith("/public")) {
     yield next

@@ -28,6 +28,18 @@ $$(document).on('pageInit', '.page[data-page="index"]', function (e) {
     }
   });
 
+  $$.ajax({
+    url: "/siteProfile",
+    type:"GET",
+    success: function(result){
+      console.log(JSON.parse(result));
+      result = JSON.parse(result);
+      $$('#siteName').text(result.site.name);
+      $$('#siteProfileLoginPageHtml').text(result.profile.LoginPageHtml);
+      $$('#siteProfileViewerLoginImageUrl').attr('src', result.domain + '/images/' +result.profile.ViewerLoginImageUrl);
+    }
+  });
+
 
   $$("#signOutBtn").click(function() {
     myApp.confirm('確定登出當前帳號?', '登出', function () {
