@@ -5,9 +5,15 @@ $(document).ready(function() {
     type:"GET",
     success: function(result){
       console.log(result)
-      $(".navbar-header").loadTemplate($("#logoTpl"),{
+      if(result.profile.ViewerLoginImageUrl != ""){
+        $(".navbar-header").loadTemplate($("#logoPicTpl"),{
             logo: result.domain+'/images'+result.profile.ViewerLoginImageUrl
-      });
+        });
+      }else{
+        $(".navbar-header").loadTemplate($("#logoTextTpl"),{
+            LogoText: result.site.name
+        });
+      }
 
       $("#description").loadTemplate($("#descriptionTpl"),{
             description: result.profile.LoginPageHtml

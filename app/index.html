@@ -12,6 +12,14 @@
     <link rel="stylesheet" href="css/kitchen-sink.css">
     <link rel="icon" href="img/icon.png">
     <link rel="apple-touch-icon" href="img/icon.png">
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-70841131-1', 'auto');
+      ga('send', 'pageview');
+    </script>
   </head>
   <body>
     <div class="views">
@@ -26,7 +34,7 @@
         <div class="toolbar">
           <div class="toolbar-inner">
             <a href="about.html">關於</a>
-            <!-- <a href="#" data-popover=".popover-music" class="open-popover link">說明</a> -->
+            <a href="feedback.html" data-popover=".popover-music" class="open-popover link">回報問題</a>
           </div>
         </div>
         <div class="pages navbar-through toolbar-through">
@@ -114,6 +122,9 @@
                 <div class="list-block-label">
                   <a href="#" class="close-login-screen">cancal</a>
                 </div>
+                <div class="list-block-label">
+                  <a href="feedback.html" class="close-login-screen">問題回報</a>
+                </div>
               </div>
             </form>
           </div>
@@ -128,6 +139,7 @@
     <script type="text/javascript" src="js/bookList.js"></script>
     <script type="text/javascript" src="js/eReader.js"></script>
     <script type="text/javascript" src="js/changePassword.js"></script>
+    <script type="text/javascript" src="js/feedback.js"></script>
     <!-- template7 templates -->
     <script type="text/template7" id="booklist">
       {{#each this}}

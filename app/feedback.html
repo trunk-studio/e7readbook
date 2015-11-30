@@ -1,0 +1,99 @@
+
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="left sliding"><a href="forms.html" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
+    <div class="center sliding">回報問題</div>
+    <!-- <div class="right"><a href="#" class="link open-panel icon-only"><i class="icon icon-bars"></i></a></div> -->
+  </div>
+</div>
+<div class="pages navbar-through">
+  <div data-page="feedback" class="page">
+    <div class="page-content">
+      <div class="content-block-title">回報問題</div>
+      <form id="feedback-form" action="/feedback" method="post" class="ajax-submit" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+        <div class="list-block">
+          <ul>
+            <!-- Text inputs -->
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">帳號</div>
+                  <div class="item-input">
+                    <input type="text" name="name" placeholder="id">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-email"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">E-mail</div>
+                  <div class="item-input">
+                    <input type="email" name="email"  placeholder="E-mail">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-tel"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">電話</div>
+                  <div class="item-input">
+                    <input type="tel" name="phone" placeholder="Phone" class="">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">服務單位</div>
+                  <div class="item-input">
+                    <input type="text" name="serviceUnits" placeholder="輸入">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <!-- Select -->
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-comment"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">主旨</div>
+                  <div class="item-input">
+                    <select name="situation" >
+                    　<option value="帳號無法登入">帳號無法登入</option>
+                    　<option value="無法顯示書籍清單">無法顯示書籍清單</option>
+                    　<option value="無法瀏覽電子書內容">無法瀏覽電子書內容</option>
+                    　<option value="讀取速度緩慢">讀取速度緩慢</option>
+                      <option value="其他">其他</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <!-- Textarea -->
+            <li class="align-top">
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-comment"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">反映內容</div>
+                  <div class="item-input">
+                    <textarea name="message" placeholder="輸入"></textarea>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="list-block">
+            <input type="submit" class="button button-big button-round active" value="送出" style="width:50%; margin:0 auto;">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
