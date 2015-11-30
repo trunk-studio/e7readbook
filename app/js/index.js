@@ -36,7 +36,11 @@ $$(document).on('pageInit', '.page[data-page="index"]', function (e) {
       result = JSON.parse(result);
       $$('#siteName').text(result.site.name);
       $$('#siteProfileLoginPageHtml').text(result.profile.LoginPageHtml);
-      $$('#siteProfileViewerLoginImageUrl').attr('src', result.domain + '/images/' +result.profile.ViewerLoginImageUrl);
+      if(result.profile.ViewerLoginImageUrl != "")
+        $$('#siteProfileViewerLoginImageUrl').attr('src', result.domain + '/images/' +result.profile.ViewerLoginImageUrl);
+      else{
+        $$('#siteProfileViewerLoginImageUrl').remove();
+      }
     }
   });
 

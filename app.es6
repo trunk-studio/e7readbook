@@ -69,13 +69,13 @@ guest.post('/feedback', function *(next){
         contactServiceUnits, contactSubject, contactMessage, contactDate),
       subject: 'New message from ' + contactName,
       replyTo: contactEmail,
-      to: 'service@trunk-studio.com'
+      to: 'koobe@trunksys.com'
     };
 
     var message2 = {
       html: util.format(mailConfirmation, contactName, contactMessage),
-      subject: '[KOOBE] 您的回報已順利送出.',
-      replyTo: 'service@trunk-studio.com',
+      subject: '您的回報已順利送出.',
+      replyTo: 'koobe@trunksys.com',
       to: contactEmail
     };
 
