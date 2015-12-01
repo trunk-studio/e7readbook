@@ -3,11 +3,6 @@ var mainView = myApp.addView('.view-main', {
     // Enable Dynamic Navbar for this view
     dynamicNavbar: true,
 });
-// Add another view, which is in right panel
-var rightView = myApp.addView('.view-right', {
-    // Enable Dynamic Navbar for this view
-    dynamicNavbar: true
-});
 
 // Show/hide preloader for remote ajax loaded pages
 // Probably should be removed on a production/local app
