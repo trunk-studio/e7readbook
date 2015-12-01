@@ -20,7 +20,7 @@ $(document).ready(function() {
       });
 
       $("#rightsDescription").loadTemplate($("#rightsDescriptionTpl"),{
-            rightsDescription: result.profile.RightsDescription
+            rightsDescription: result.profile.RightsDescription.replace('%YEAR%',new Date().getFullYear())
       });
     },
     error:function(xhr, ajaxOptions, thrownError){
