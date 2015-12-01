@@ -13,6 +13,17 @@ $$('#login-form').on('submitted', function (e) {
     $$("input[name='identifier']").val('')
     $$(".notSigned").hide();
     $$(".signed").show();
+  }else if(data.status == 'first'){
+    myApp.closeModal($$(".login-screen"));
+    myApp.alert("第一次登入記得更改密碼喔","警告")
+    myApp.addNotification({
+      title: '登入成功',
+      hold: 2000
+    });
+    $$("input[name='password']").val('');
+    $$("input[name='identifier']").val('')
+    $$(".notSigned").hide();
+    $$(".signed").show();
   }else{
     myApp.alert('請再次確認帳號密碼喔','錯誤');
   }

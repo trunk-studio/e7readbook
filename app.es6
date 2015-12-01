@@ -126,7 +126,7 @@ guest.post('/auth/local/', function *(next) {
     .set('x-requested-with', 'XMLHttpRequest');
     this.body = result.body;
     console.log(result.body);
-    if(result.body.status == 'ok'){
+    if(result.body.status == 'ok' || result.body.status == 'first'){
       this.session.login = true;
       this.session.user = result.body.user;
       console.log(this.session);
