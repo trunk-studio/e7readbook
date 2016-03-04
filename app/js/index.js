@@ -12,6 +12,12 @@ var myApp = new Framework7({
 var $$ = Dom7;
 
 $$(document).on('pageInit', '.page[data-page="index"]', function (e) {
+  setTimeout(function() {
+    $$('#splash').addClass('animated fadeOut');
+    setTimeout(function() {
+      $$('#splash').hide();
+    }, 650);
+  }, 500);
   $$.ajax({
     url: "/user/loginStatus",
     type:"GET",
