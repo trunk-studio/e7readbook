@@ -9095,7 +9095,7 @@ section#header {
 #brn-promo {
   margin-top: 0;
   margin-bottom: 96px;
-  background: url("../img/zi-fullscreen-bg.png") 50% 0 no-repeat #cc1433;
+  background: url("../img/fullscreen-bg.jpg") 50% 0 no-repeat #ddd;
 }
 #brn-promo h1 {
   margin-top: 96px;
@@ -9411,7 +9411,7 @@ section#header {
   margin-top: 0;
 }
 .pricing-table.pricing-top .pricing-header {
-  background: url("../img/zi-fullscreen-bg.png") 50% 0 #cc1433;
+  background: url("../img/fullscreen-bg.jpg") 50% 0 #ddd;
   color: #fff;
   padding: 24px 0;
 }
