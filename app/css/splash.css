@@ -66,3 +66,15 @@
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
 }
+
+#bookListUl .item-inner{
+  overflow: hidden;
+}
+
+#bookListUl .item-title{
+  white-space: normal;
+}
+
+.bookTitle{
+  font-size: smaller;
+}
