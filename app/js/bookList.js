@@ -3,8 +3,9 @@ $$(document).on('pageInit', '.page[data-page="bookList"]', function (e) {
   $$.ajax({
     url: "/books",
     type:"POST",
+    dataType: 'json',
     success: function(result){
-      var books = JSON.parse(result);
+      var books = result;
       console.log(books);
       showBookList(books);
       myApp.hidePreloader();
@@ -25,9 +26,9 @@ $$(document).on('pageInit', '.page[data-page="bookList"]', function (e) {
     $$.ajax({
       url: openUrl,
       type:"GET",
+      dataType: 'json',
       success: function(result){
-        console.log(JSON.parse(result));
-        var bookDate = JSON.parse(result);
+        var bookDate = result;
         if(bookDate.pageTotal == 0){
           myApp.alert("書本沒有資料喔",'錯誤');
           return ;
