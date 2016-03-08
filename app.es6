@@ -19,6 +19,7 @@ var koaBodyParser = require('koa-bodyparser');
 app.use(koaBodyParser());
 
 var rangeCheck = require('range_check');
+var requestIp = require('request-ip');
 
 var env = process.env.NODE_ENV || 'development';
 var addr = process.env.PICKLETE_PORT_1337_TCP_ADDR || 'localhost';
@@ -101,9 +102,11 @@ guest.post('/feedback', function *(next){
 guest.get('/siteProfile', function *(next){
   try {
     var result = yield request.get(restServerUrl+'/siteProfile?domain='+extractDomain(this.request.header.referer));
-    if(result.body.site.allowFrom){
-      console.log(rangeCheck.inRange(this.ip, result.body.site.allowFrom));
-    }
+    // if(result.body.site.allowFrom){
+      var ip = requestIp.getClientIp(this.req)
+      console.log(JSON.stringify(this, 2, null));
+      console.log(ip ,rangeCheck.inRange(ip, result.body.site.allowFrom));
+    // }
     this.body = result.body;
   } catch (e) {
     console.log(e);
