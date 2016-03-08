@@ -37,15 +37,19 @@ $$(document).on('pageInit', '.page[data-page="index"]', function (e) {
   $$.ajax({
     url: "/siteProfile",
     type:"GET",
+    dataType: 'json',
     success: function(result){
-      console.log(JSON.parse(result));
-      result = JSON.parse(result);
-      $$('#siteName').text(result.site.name);
-      $$('#siteProfileLoginPageHtml').text(result.profile.LoginPageHtml);
-      if(result.profile.ViewerLoginImageUrl != "")
+      console.log(result);
+      if(result.competence){
+        $$('#siteName').text(result.site.name);
+        $$('#siteProfileLoginPageHtml').text(result.profile.LoginPageHtml);
+        if(result.profile.ViewerLoginImageUrl != "")
         $$('#siteProfileViewerLoginImageUrl').attr('src', result.domain + '/images/' +result.profile.ViewerLoginImageUrl);
-      else{
-        $$('#siteProfileViewerLoginImageUrl').remove();
+        else{
+          $$('#siteProfileViewerLoginImageUrl').remove();
+        }
+      }else{
+        window.location.replace(result.domain);
       }
     }
   });

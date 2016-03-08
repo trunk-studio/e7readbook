@@ -101,13 +101,21 @@ guest.post('/feedback', function *(next){
 
 guest.get('/siteProfile', function *(next){
   try {
-    var result = yield request.get(restServerUrl+'/siteProfile?domain='+extractDomain(this.request.header.referer));
-    // if(result.body.site.allowFrom){
+    var domain = extractDomain(this.request.header.referer);
+    var result = yield request.get(restServerUrl+'/siteProfile?domain='+ domain);
+    result.body.competence = true;
+    if(result.body.site.allowFrom){
       var ip = requestIp.getClientIp(this.req)
-      console.log(JSON.stringify(this, 2, null));
-      console.log(ip ,rangeCheck.inRange(ip, result.body.site.allowFrom));
-    // }
-    this.body = result.body;
+      if(!rangeCheck.inRange(ip, result.body.site.allowFrom)){
+        result.body.competence = false;
+        result.body.domain = "http://" + domain.replace('e7read', 'koobe')+ '.tw';
+        delete result.body.site;
+        delete result.body.profile;
+        this.body = result.body;
+      }
+    }else{
+      this.body = result.body;
+    }
   } catch (e) {
     console.log(e);
   }
