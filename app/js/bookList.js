@@ -3,8 +3,9 @@ $$(document).on('pageInit', '.page[data-page="bookList"]', function (e) {
   $$.ajax({
     url: "/books",
     type:"POST",
+    dataType: 'json',
     success: function(result){
-      var books = JSON.parse(result);
+      var books = result;
       console.log(books);
       showBookList(books);
       myApp.hidePreloader();
@@ -15,6 +16,39 @@ $$(document).on('pageInit', '.page[data-page="bookList"]', function (e) {
       myApp.alert(thrownError);
     }
   });
+
+
+  $$(document).on('click', '#bookListUl .item-content', function(){
+    var id = $$(this).attr('data-id');
+    var totalPageNumber = $$(this).attr('data-totalPageNumber');
+    var openUrl = "/ereader?id="+ id +"&name=APPLE&pages="+ totalPageNumber +"&loc=/a/1/a1tw-32sd-23dfs-3f24-sdff-fs3s&uuid=a1tw-32sd-23dfs-3f24-sdff-fs3s";
+    var bookPages = [];
+    $$.ajax({
+      url: openUrl,
+      type:"GET",
+      dataType: 'json',
+      success: function(result){
+        var bookDate = result;
+        if(bookDate.pageTotal == 0){
+          myApp.alert("書本沒有資料喔",'錯誤');
+          return ;
+        }
+        bookDate.pages.forEach(function(book){
+          bookPages.push(book.url);
+        });
+        var myPhotoBrowserStandalone = myApp.photoBrowser({
+          photos : bookPages,
+          swipeToClose: false,
+          expositionHideCaptions: true,
+          lazyLoading: true,
+          lazyLoadingInPrevNext: true,
+          lazyLoadingOnTransitionStart: true
+        });
+        myPhotoBrowserStandalone.open();
+      }
+    });
+  });
+
 })
 
 
