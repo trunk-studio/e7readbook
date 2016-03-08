@@ -69,15 +69,15 @@
     "passport-local": "^1.0.0",
     "sinon": "^1.17.2",
     "superagent": "^1.4.0",
-    "babel": "^5.6.14",
-    "koa-generic-session": "^1.9.2",
-    "koa-passport": "^1.2.0",
-    "passport-local": "^1.0.0",
     "sails-service-mailer": "^2.0.1",
     "supertest": "^1.1.0",
     "supertest-as-promised": "^2.0.2"
   },
   "scripts": {
     "test": "NODE_ENV=test ./node_modules/.bin/mocha ./test/**/*.spec.js"
+  },
+  "dependencies": {
+    "range_check": "^1.2.0",
+    "request-ip": "^1.2.2"
   }
 }

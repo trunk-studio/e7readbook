@@ -18,6 +18,8 @@ app.use(session());
 var koaBodyParser = require('koa-bodyparser');
 app.use(koaBodyParser());
 
+var rangeCheck = require('range_check');
+
 var env = process.env.NODE_ENV || 'development';
 var addr = process.env.PICKLETE_PORT_1337_TCP_ADDR || 'localhost';
 var port = process.env.PICKLETE_PORT_1337_TCP_PORT || '1336';
@@ -99,6 +101,9 @@ guest.post('/feedback', function *(next){
 guest.get('/siteProfile', function *(next){
   try {
     var result = yield request.get(restServerUrl+'/siteProfile?domain='+extractDomain(this.request.header.referer));
+    if(result.body.site.allowFrom){
+      console.log(rangeCheck.inRange(this.ip, result.body.site.allowFrom));
+    }
     this.body = result.body;
   } catch (e) {
     console.log(e);
