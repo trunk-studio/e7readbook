@@ -52,10 +52,6 @@ $$(document).on('pageInit', '.page[data-page="bookList"]', function (e) {
 
 })
 
-$$('.photo-browser').onOpne(function(){
-  myApp.alert("????????");
-})
-
 function showBookList(data){
   var bookListTemplate = $$('script#booklist').html();
   var compiledBookListTemplate = Template7.compile(bookListTemplate);
