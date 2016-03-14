@@ -17,7 +17,6 @@ $$(document).on('pageInit', '.page[data-page="bookList"]', function (e) {
     }
   });
 
-
   $$(document).on('click', '#bookListUl .item-content', function(){
     var id = $$(this).attr('data-id');
     var totalPageNumber = $$(this).attr('data-totalPageNumber');
@@ -36,21 +35,26 @@ $$(document).on('pageInit', '.page[data-page="bookList"]', function (e) {
         bookDate.pages.forEach(function(book){
           bookPages.push(book.url);
         });
-        var myPhotoBrowserStandalone = myApp.photoBrowser({
-          photos : bookPages,
-          swipeToClose: false,
-          expositionHideCaptions: true,
-          lazyLoading: true,
-          lazyLoadingInPrevNext: true,
-          lazyLoadingOnTransitionStart: true
-        });
-        myPhotoBrowserStandalone.open();
+        if($$(".photo-browser").length == 0 ){
+          var myPhotoBrowserStandalone = myApp.photoBrowser({
+            photos : bookPages,
+            swipeToClose: false,
+            expositionHideCaptions: true,
+            lazyLoading: true,
+            lazyLoadingInPrevNext: true,
+            lazyLoadingOnTransitionStart: true
+          });
+          myPhotoBrowserStandalone.open();
+        }
       }
     });
   });
 
 })
 
+$$('.photo-browser').onOpne(function(){
+  myApp.alert("????????");
+})
 
 function showBookList(data){
   var bookListTemplate = $$('script#booklist').html();

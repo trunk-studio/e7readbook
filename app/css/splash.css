@@ -78,3 +78,7 @@
 .bookTitle{
   font-size: smaller;
 }
+
+.photo-browser-slide span.photo-browser-zoom-container {
+  height: inherit !important;
+}
