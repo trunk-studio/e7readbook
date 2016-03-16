@@ -12,8 +12,10 @@ $$(document).on('pageInit', '.page[data-page="bookList"]', function (e) {
       $$('#bookListLength').text(books.length+" 本書");
     },
     error:function(xhr, ajaxOptions, thrownError){
-      myApp.alert(xhr.status);
-      myApp.alert(thrownError);
+      myApp.hidePreloader();
+      window.location.href = 'index.html'
+      // myApp.alert(xhr.status);
+      // myApp.alert(thrownError);
     }
   });
 
