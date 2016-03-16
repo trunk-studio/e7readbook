@@ -63,9 +63,9 @@
             -->
             <!-- Right navbar part-->
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#header">Home</a></li>
-              <li><a href="#brn-feedback">Feedback</a></li>
-              <li><a href="/app/index.html">Start</a></li>
+              <li><a href="#header">主畫面</a></li>
+              <li><a href="#brn-feedback">意見回饋</a></li>
+              <!-- <li><a href="/app/index.html">Start</a></li> -->
               <!-- You can add button or dropdown here-->
               <!-- Button
               <li><a href="#" class="btn btn-primary">Button</a></li>
@@ -124,7 +124,7 @@
         <!-- Section header-->
         <header>
           <div class="row">
-            <div class="col-xs-12">
+            <div class="center col-xs-12">
               <!-- Don't forget to use span tag for center lines-->
               <h2 class="stripe"><span>Feedback</span></h2>
             </div>
@@ -134,7 +134,8 @@
         </header>
         <!-- Section header end-->
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-md-2"></div>
+          <div class="col-sm-8">
             <!-- Feedback messages output-->
             <div id="feedback_messages"></div>
             <!-- Feedback messages output end-->
@@ -178,18 +179,19 @@
               </div>
               <!-- Form Group end-->
               <!-- Form Group-->
-              <div class="form-group">
+              <div class="form-group text-center">
                 <button value="OK" type="submit" class="btn btn-default">送出</button>
               </div>
               <!-- Form Group end-->
             </form>
             <!-- Feedback form end-->
           </div>
+          <div class="col-md-2"></div>
           <!-- /col-sm-6-->
           <!-- Feedback right info-->
-          <div class="col-sm-6">
+          <!-- <div class="col-sm-6">
             <h3 class="color-primary">Stay in touch!</h3>
-          </div>
+          </div> -->
           <!-- Feedback right info end-->
         </div>
         <!-- /row-->
@@ -210,11 +212,11 @@
 
     <script type="text/html" id="descriptionTpl">
       <h1>全新雲端閱讀體驗</h1>
-      <p class="lead" data-content="description">雲端閱讀平台正在升級中，如有疑問請與平台管理人員聯繫⋯</p>
+      <div class="lead" data-content="description">雲端閱讀平台正在升級中，如有疑問請與平台管理人員聯繫⋯</div>
     </script>
 
     <script type="text/html" id="rightsDescriptionTpl">
-      <p data-content="rightsDescription"></p>
+      <div data-content="rightsDescription"></div>
     </script>
 
     <!-- jQuery-->
