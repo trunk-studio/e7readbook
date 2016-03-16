@@ -2,6 +2,7 @@
 var mainView = myApp.addView('.view-main', {
     // Enable Dynamic Navbar for this view
     dynamicNavbar: true,
+    linkView: mainView
 });
 
 // Show/hide preloader for remote ajax loaded pages
