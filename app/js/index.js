@@ -42,7 +42,7 @@ $$(document).on('pageInit', '.page[data-page="index"]', function (e) {
       console.log(result);
       if(result.competence){
         $$('#siteName').text(result.site.name);
-        $$('#siteProfileLoginPageHtml').text(result.profile.LoginPageHtml);
+        // $$('#siteProfileLoginPageHtml').text(result.profile.LoginPageHtml);
         if(result.profile.ViewerLoginImageUrl != "")
         $$('#siteProfileViewerLoginImageUrl').attr('src', result.domain + '/images/' +result.profile.ViewerLoginImageUrl);
         else{
