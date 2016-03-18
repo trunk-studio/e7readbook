@@ -2,7 +2,6 @@ $$(document).on('pageInit', '.page[data-page="feedback"]', function (e) {
   $$('#feedback-form').on('submitted', function (e) {
     var xhr = e.detail.xhr; // actual XHR object
     var data = e.detail.data;
-    console.log(data);
     if(data == 'PRINYAL'){
       mainView.router.back();
       myApp.addNotification({
@@ -15,7 +14,6 @@ $$(document).on('pageInit', '.page[data-page="feedback"]', function (e) {
   });
 
   $$('#feedback-form').on('submitError', function (e) {
-    console.log(e);
     myApp.alert('請輸入完全喔','錯誤');
   });
 

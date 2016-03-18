@@ -2,7 +2,6 @@
 $$('#login-form').on('submitted', function (e) {
   var xhr = e.detail.xhr; // actual XHR object
   var data = JSON.parse(e.detail.data);
-  console.log(data);
   if(data.status == 'ok'){
     myApp.closeModal($$(".login-screen"));
     myApp.addNotification({

@@ -39,7 +39,6 @@ $$(document).on('pageInit', '.page[data-page="index"]', function (e) {
     type:"GET",
     dataType: 'json',
     success: function(result){
-      console.log(result);
       if(result.competence){
         $$('#siteName').text(result.site.name);
         // $$('#siteProfileLoginPageHtml').text(result.profile.LoginPageHtml);
