@@ -6,7 +6,6 @@ $$(document).on('pageInit', '.page[data-page="bookList"]', function (e) {
     dataType: 'json',
     success: function(result){
       var books = result;
-      console.log(books);
       showBookList(books);
       myApp.hidePreloader();
       $$('#bookListLength').text(books.length+" 本書");
