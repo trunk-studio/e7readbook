@@ -8,7 +8,8 @@ $$(document).on('pageInit', '.page[data-page="bookList"]', function (e) {
       var books = result;
       showBookList(books);
       myApp.hidePreloader();
-      $$('#bookListLength').text(books.length+" 本書");
+      //$$('#bookListLength').text(books.length+" 本書");
+      $$('#bookListLength').text('已經顯示所有書籍');
     },
     error:function(xhr, ajaxOptions, thrownError){
       myApp.hidePreloader();
